@@ -41,8 +41,22 @@ class _NewsPageState extends State<NewsPage> {
                     padding: const EdgeInsets.only(left: 16),
                     child: TextFormField(
                       onFieldSubmitted: (value) {
-                        listNews = NetworkManager().getSearchNews(value);
-                        setState(() {});
+                        if (value.isEmpty) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Text Search tidak boleh kosng'),
+                            backgroundColor: Colors.red,
+                          ));
+                        } else {
+                          listNews = NetworkManager()
+                              .getSearchNews(_searchController.text);
+                          setState(() {});
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Searching berhasil'),
+                            backgroundColor: Colors.blue,
+                          ));
+                        }
                       },
                       controller: _searchController,
                       decoration: const InputDecoration(labelText: 'Search'),
@@ -51,9 +65,17 @@ class _NewsPageState extends State<NewsPage> {
                 ),
                 IconButton(
                     onPressed: () {
-                      listNews = NetworkManager()
-                          .getSearchNews(_searchController.text);
-                      setState(() {});
+                      if (_searchController.text.isEmpty) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('Text Search tidak boleh kosng'),
+                          backgroundColor: Colors.red,
+                        ));
+                      } else {
+                        listNews = NetworkManager()
+                            .getSearchNews(_searchController.text);
+                        setState(() {});
+                      }
                     },
                     icon: const Icon(Icons.search))
               ],
