@@ -1,7 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter_joints_news_apps/article_model.dart';
+
 import 'package:http/http.dart' as http;
+
+import 'article_model.dart';
 
 class NetworkManager {
   Future<List<Article>> getAllNews() async {

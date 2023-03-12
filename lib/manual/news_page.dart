@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_joints_news_apps/article_model.dart';
-import 'package:flutter_joints_news_apps/network_manager.dart';
-import 'package:flutter_joints_news_apps/news_detail.dart';
+import 'package:flutter_joints_news_apps/data/article_model.dart';
+import 'package:flutter_joints_news_apps/data/network_manager.dart';
+
+import 'news_detail.dart';
+
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
